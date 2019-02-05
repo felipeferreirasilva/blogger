@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 
 app.use('/api/auth', authRoutes)
 
-app.use((req, res, next ) => {
+app.use(function(req, res, next){
     let err = new Error('Not Found')
     err.status = 404
     next(err)

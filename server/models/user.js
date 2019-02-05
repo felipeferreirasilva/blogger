@@ -23,15 +23,15 @@ userSchema.pre('save', async function(next){
             return next()
         }
         
-        let hashPassword = await bcrypt.hash(this.password, 10)
-        this.password = hashPassword
+        let hashedPassword = await bcrypt.hash(this.password, 10)
+        this.password = hashedPassword
         return next()
     }catch(err) {
         return next(err)
     }
 })
 
-userSchema.method.comparePassword = async (candidatePassword, next) => {
+userSchema.methods.comparePassword = async function(candidatePassword, next){
     try{
         let isMatch = await bcrypt.compare(candidatePassword, this.password)
         return isMatch
