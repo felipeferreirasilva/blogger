@@ -16,6 +16,17 @@ const postSchema = new mongoose.Schema({
     }
 })
 
+postSchema.pre('remove', async function(next){
+    try{
+        let user = await User.findById(this.userId)
+        user.message.remove(this.id)
+        await user.save()
+        return next()
+    }catch(err){
+        return next(err)
+    }
+})
+
 const Post = mongoose.model('Post', postSchema)
 
 module.exports = Post

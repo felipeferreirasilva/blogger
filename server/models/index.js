@@ -8,3 +8,4 @@ mongoose.connect(`mongodb://localhost:${MONGO_PORT}/blog`, {
 })
 
 module.exports.User = require('./user')
+module.exports.Post = require('./post')
