@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const errorHandler = require('./handlers/err')
 const authRoutes = require('./routes/auth')
 const postsRoutes = require('./routes/posts')
+const { loginRequired, ensureCorrectUser } = require('./middleware/auth')
 
 const PORT = 8081
 
@@ -13,7 +14,7 @@ app.use(cors())
 app.use(bodyParser.json())
 
 app.use('/api/auth', authRoutes)
-app.use('/api/users/:id/posts', postsRoutes)
+app.use('/api/users/:id/posts', loginRequired, ensureCorrectUser, postsRoutes)
 
 app.use(function(req, res, next){
     let err = new Error('Not Found')
