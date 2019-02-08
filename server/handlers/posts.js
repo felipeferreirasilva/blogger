@@ -29,6 +29,7 @@ exports.getPost = async function(req, res, next){
     }
 }
 
+// Get all posts and sort by updated date
 exports.getAllPosts = async function(req, res, next){
     try{
         let posts = await db.Post.find().sort({updatedAt: -1})

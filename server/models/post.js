@@ -18,6 +18,7 @@ const postSchema = new mongoose.Schema({
    timestamps: true 
 })
 
+// Remove post inside user object
 postSchema.pre('remove', async function(next){
     try{
         let user = await User.findById(this.user)
