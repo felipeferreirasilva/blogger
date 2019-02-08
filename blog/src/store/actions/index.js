@@ -5,8 +5,11 @@ export const USER_SIGNUP = 'USER_SIGNUP'
 export const USER_SIGNIN = 'USER_SIGNIN'
 export const CREATE_POST = 'CREATE_POST'
 export const GET_POSTS = 'GET_POSTS'
+export const ADD_ERROR = 'ADD_ERROR'
+export const REMOVE_ERROR = 'REMOVE_ERROR'
+export const LOGOUT_USER = 'LOGOUT_USER'
 
-export const signUp = newUser => {
+export const signUp = (newUser, history) => {
     return dispatch => {
         axios.post(`${API_URL}/api/auth/signup`, newUser)
 
@@ -19,9 +22,11 @@ export const signUp = newUser => {
                     type: USER_SIGNUP,
                     user: response.data
                 })
+                setLocalUser(response.data)
+                history.push('/')
             })
             .catch(error => {
-                console.log(error.response.data)
+                dispatch(addError(error.response.data.error.message))
             });
     }
 }
@@ -34,17 +39,18 @@ export const signIn = (user, history) => {
                     type: USER_SIGNIN,
                     user: response.data
                 })
+                setLocalUser(response.data)
                 history.push('/')
             })
             .catch(error => {
-                console.log(error.response.data)
+                dispatch(addError(error.response.data.error.message))
             });
     }
 }
 
 export const createPost = (user, post, history) => {
     return dispatch => {
-        axios.post(`${API_URL}/api/users/${user.id}/posts`, post, {
+        axios.post(`${API_URL}/api/posts/${user.id}/new`, post, {
             headers: { Authorization: `Bearer ${user.token}` }
         })
             .then(() => {
@@ -63,7 +69,6 @@ export const getPosts = () => {
     return dispatch => {
         axios.get(`${API_URL}/api/posts`)
             .then(response => {
-                console.log(response.data)
                 dispatch({
                     type: GET_POSTS,
                     posts: response.data
@@ -72,6 +77,35 @@ export const getPosts = () => {
             .catch(error => {
                 console.log(error.response.data)
             });
+    }
+}
+
+export const setLocalUser = user => {
+    localStorage.setItem('user', JSON.stringify({
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        token: user.token
+    }))
+}
+
+export const logout = () => {
+    localStorage.clear()
+    return{
+        type: LOGOUT_USER
+    }
+}
+
+export const addError = error => {
+    return {
+        type: ADD_ERROR,
+        error
+    }
+}
+
+export const removeError = () => {
+    return {
+        type: REMOVE_ERROR
     }
 }
 

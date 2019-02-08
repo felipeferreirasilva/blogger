@@ -8,7 +8,6 @@ class Posts extends Component {
     }
     render() {
         let posts = (this.props.posts)
-        console.log(posts)
         return (
             <div className="container">
                 {Object.keys(posts).length > 0 &&

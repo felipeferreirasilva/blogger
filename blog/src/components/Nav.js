@@ -4,11 +4,12 @@ import { connect } from 'react-redux'
 
 class Nav extends Component {
     render() {
+        let logged = Object.keys(this.props.user).length > 0 ? true : false
         let user = this.props.user
         return (
             <div className="mb-4">
                 <nav className="mb-1 navbar navbar-expand-md navbar-dark primary-color">
-                    <Link className="navbar-brand" to="/">Blog</Link>
+                    <Link className="navbar-brand" to="/">Blogger</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
                         aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -18,7 +19,7 @@ class Nav extends Component {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/">Home</Link>
                             </li>
-                            {Object.keys(user).length > 0 &&
+                            {logged &&
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/posts/new">New Post</Link>
                                 </li>
@@ -29,22 +30,19 @@ class Nav extends Component {
                             <li className="nav-item dropdown">
                                 <span className="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false">
-                                    {Object.keys(user).length === 0 &&
+                                    {!logged ?
                                         <span id="user-menu">Login </span>
-                                    }
-                                    {Object.keys(user).length > 1 &&
+                                        :
                                         <span id="user-menu">{user.name} </span>
                                     }
                                 </span>
                                 <div className="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-                                    {Object.keys(user).length === 0 &&
+                                    {!logged ?
                                         <div>
                                             <Link className="dropdown-item" to="/users/signin">Sign In</Link>
                                             <Link className="dropdown-item" to="/users/signup">Sign Up</Link>
                                         </div>
-                                    }
-
-                                    {Object.keys(user).length > 1 &&
+                                        :
                                         <div>
                                             <Link className="dropdown-item" to="/users/logout">Log out</Link>
                                         </div>

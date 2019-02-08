@@ -15,7 +15,7 @@ app.use(bodyParser.json())
 
 app.use('/api/auth', authRoutes)
 app.use('/api/posts', postsRoutes)
-app.use('/api/users/:id/posts', loginRequired, ensureCorrectUser, postsRoutes)
+app.use('/api/posts/:id/new', loginRequired, ensureCorrectUser, postsRoutes)
 
  
 app.use(function(req, res, next){

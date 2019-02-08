@@ -5,6 +5,7 @@ import Posts from '../components/Posts/Posts'
 import NewPost from '../components/Posts/NewPost'
 import Signin from '../components/User/Signin'
 import Signup from '../components/User/Signup'
+import Logout from '../components/User/Logout'
 
 class Routes extends Component{
     render(){
@@ -14,7 +15,7 @@ class Routes extends Component{
                 <Route path="/posts/new" exact component={NewPost}/>
                 <Route path="/users/signin" component={Signin}/>
                 <Route path="/users/signup" component={Signup}/>
-                {/* /posts/new */}
+                <Route path="/users/logout" component={Logout}/>
             </div>
         )
     }
