@@ -5,7 +5,7 @@ export const USER_SIGNUP = 'USER_SIGNUP'
 export const USER_SIGNIN = 'USER_SIGNIN'
 export const LOGOUT_USER = 'LOGOUT_USER'
 export const CREATE_POST = 'CREATE_POST'
-export const UPDATE_POST   = 'UPDATE_POST'
+export const UPDATE_POST = 'UPDATE_POST'
 export const GET_POSTS = 'GET_POSTS'
 export const DELETE_POST = 'DELETE_POST'
 export const ADD_ERROR = 'ADD_ERROR'
@@ -14,11 +14,6 @@ export const REMOVE_ERROR = 'REMOVE_ERROR'
 export const signUp = (newUser, history) => {
     return dispatch => {
         axios.post(`${API_URL}/api/auth/signup`, newUser)
-
-            //   name: 'joao',
-            //   email: 'joao@gmail.com',
-            //   password: 'mudar123'
-
             .then(function (response) {
                 dispatch({
                     type: USER_SIGNUP,
@@ -72,16 +67,16 @@ export const updatePost = (user, postId, newPost, history) => {
         axios.put(`${API_URL}/api/posts/${user.id}/post/${postId}`, newPost, {
             headers: { Authorization: `Bearer ${user.token}` }
         })
-        .then(response => {
-            dispatch({
-                type: UPDATE_POST,
-                post: response.data
+            .then(response => {
+                dispatch({
+                    type: UPDATE_POST,
+                    post: response.data
+                })
+                history.push('/')
             })
-            history.push('/')
-        })
-        .catch(error => {
-            dispatch(addError(error.response.data.error.message))
-        })
+            .catch(error => {
+                dispatch(addError(error.response.data.error.message))
+            })
     }
 }
 
@@ -106,15 +101,15 @@ export const deletePost = (user, postId) => {
         axios.delete(`${API_URL}/api/posts/${user.id}/post/${postId}`, {
             headers: { Authorization: `Bearer ${user.token}` }
         })
-        .then(() => {
-            dispatch({
-                type: DELETE_POST
+            .then(() => {
+                dispatch({
+                    type: DELETE_POST
+                })
+                dispatch(getPosts())
             })
-            dispatch(getPosts())
-        })
-        .catch(error => {
-            dispatch(addError(error.response.data.error.message))
-        });
+            .catch(error => {
+                dispatch(addError(error.response.data.error.message))
+            });
     }
 }
 
@@ -129,7 +124,7 @@ export const setLocalUser = user => {
 
 export const logout = () => {
     localStorage.clear()
-    return{
+    return {
         type: LOGOUT_USER
     }
 }

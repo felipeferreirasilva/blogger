@@ -24,7 +24,9 @@ class Posts extends Component {
                 {Object.keys(posts).length > 0 &&
                     posts.map(post => (
                         <div className="card mr-4 ml-4 mb-4 hoverable" key={post._id}>
-                            <div className="card-header"><strong>Date:</strong> <Moment format="DD/MM/YYYY">{post.updatedAt}</Moment></div>
+                            <div className="card-header">
+                                <strong>Date:</strong> <Moment format="DD/MM/YYYY hh:mm">{post.updatedAt}</Moment>
+                            </div>
                             <div className="card-body">
                                 <h2 className="card-title">{post.title}</h2>
                                 <p className="card-text text-justify">{post.text}</p>
@@ -34,8 +36,8 @@ class Posts extends Component {
                                         {/* {user.id === post.user && */}
                                         <span>
                                             <hr />
-                                            <button className="btn btn-danger btn-md" onClick={(event) => this.onDeletePost(event)} value={JSON.stringify(post)}>Delete</button>
-                                            <Link to={`/posts/update/${post._id}`}><button className="btn btn-primary btn-md">Edit</button></Link>
+                                            <button className="btn btn-danger btn-md waves-effect waves-light" onClick={(event) => this.onDeletePost(event)} value={JSON.stringify(post)}>Delete</button>
+                                            <Link to={`/posts/update/${post._id}`}><button className="btn btn-primary btn-md waves-effect waves-light">Edit</button></Link>
                                         </span>
                                         {/* } */}
                                     </span>

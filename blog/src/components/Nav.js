@@ -9,7 +9,7 @@ class Nav extends Component {
         return (
             <div className="mb-4">
                 <nav className="mb-1 navbar navbar-expand-md navbar-dark indigo">
-                    <Link className="navbar-brand" to="/">Blogger</Link>
+                    <Link className="navbar-brand" to="/"><i class="fas fa-book-open mr-2"></i>Blogger</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
                         aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -17,7 +17,7 @@ class Nav extends Component {
                     <div className="collapse navbar-collapse" id="navbar">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item active">
-                                <Link className="nav-link" to="/">Home</Link>
+                                <Link className="nav-link waves-effect waves-light" to="/">Home</Link>
                             </li>
                             {logged &&
                                 <li className="nav-item">
@@ -26,16 +26,17 @@ class Nav extends Component {
                             }
                         </ul>
 
-                        <ul className="navbar-nav ml-auto nav-flex-icons">
+                        <ul className="navbar-nav ml-auto">
                             <li className="nav-item dropdown">
-                                <span className="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span className="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i className="fas fa-user mr-2"></i>
                                     {!logged ?
-                                        <span id="user-menu" >Login </span>
+                                        <span id="user-menu">Login </span>
                                         :
                                         <span id="user-menu">{user.name} </span>
                                     }
                                 </span>
-                                <div className="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+                                <div className="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink">
                                     {!logged ?
                                         <div>
                                             <Link className="dropdown-item" to="/users/signin">Log In</Link>

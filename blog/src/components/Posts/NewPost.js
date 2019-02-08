@@ -63,7 +63,7 @@ class NewPost extends Component {
                                 </div>
                             </form>
                             <div className="text-center text-md-left">
-                                <button className="btn btn-primary" onClick={(event) => this.onSubmitForm(event)}>Create</button>
+                                <button className="btn btn-primary waves-effect waves-light" onClick={(event) => this.onSubmitForm(event)}>Create</button>
                             </div>
                         </div>
                     </div>

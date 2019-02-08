@@ -31,7 +31,7 @@ exports.getPost = async function(req, res, next){
 
 exports.getAllPosts = async function(req, res, next){
     try{
-        let posts = await db.Post.find()
+        let posts = await db.Post.find().sort({updatedAt: -1})
         return res.status(200).json(posts)
     }catch(err){
         return next(err)

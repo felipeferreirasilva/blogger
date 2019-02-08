@@ -51,7 +51,7 @@ class Signup extends Component {
                         <Error error={error} />
                     }
                     <form>
-                    <h2 className="h1-responsive font-weight-bold text-center">Register</h2>
+                    <h2 className="h2-responsive font-weight-bold text-center">Register</h2>
                         <div className="md-form">
                             <input type="text" id="name" className="form-control" onChange={(event) => this.onChangeName(event)} value={this.state.name} required />
                             <label htmlFor="name" className="">Name</label>
@@ -64,7 +64,7 @@ class Signup extends Component {
                             <input type="password" id="password" className="form-control" onChange={(event) => this.onChangePassword(event)} value={this.state.password} required />
                             <label htmlFor="password" className="">Password</label>
                         </div>
-                        <button className="btn btn-primary my-4 btn-block" type="submit" onClick={(event) => this.onSubmitForm(event)}>Sign up</button>
+                        <button className="btn btn-primary my-4 btn-block waves-effect waves-light" type="submit" onClick={(event) => this.onSubmitForm(event)}>Sign up</button>
                         <p className="text-center">Is already a member? <Link to="/users/signin">Log In</Link></p>
                     </form>
                 </div>
