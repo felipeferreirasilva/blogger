@@ -14,8 +14,10 @@ app.use(cors())
 app.use(bodyParser.json())
 
 app.use('/api/auth', authRoutes)
+app.use('/api/posts', postsRoutes)
 app.use('/api/users/:id/posts', loginRequired, ensureCorrectUser, postsRoutes)
 
+ 
 app.use(function(req, res, next){
     let err = new Error('Not Found')
     err.status = 404

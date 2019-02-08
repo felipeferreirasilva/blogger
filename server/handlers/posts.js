@@ -29,6 +29,20 @@ exports.getPost = async function(req, res, next){
     }
 }
 
-exports.deletePost = async function(req, res, next){
+exports.getAllPosts = async function(req, res, next){
+    try{
+        let posts = await db.Post.find()
+        return res.status(200).json(posts)
+    }catch(err){
+        return next(err)
+    }
+}
 
+exports.deletePost = async function(req, res, next){
+    try{
+        let foundPost = await db.Post.findById(req.params.post_id)
+        return res.status(200).json(foundPost)
+    }catch(err){
+        return next(err)
+    }
 }
