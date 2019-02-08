@@ -5,6 +5,7 @@ export const USER_SIGNUP = 'USER_SIGNUP'
 export const USER_SIGNIN = 'USER_SIGNIN'
 export const LOGOUT_USER = 'LOGOUT_USER'
 export const CREATE_POST = 'CREATE_POST'
+export const UPDATE_POST   = 'UPDATE_POST'
 export const GET_POSTS = 'GET_POSTS'
 export const DELETE_POST = 'DELETE_POST'
 export const ADD_ERROR = 'ADD_ERROR'
@@ -61,8 +62,26 @@ export const createPost = (user, post, history) => {
                 history.push('/')
             })
             .catch(error => {
-                console.log(error.response.data)
+                dispatch(addError(error.response.data.error.message))
             });
+    }
+}
+
+export const updatePost = (user, postId, newPost, history) => {
+    return dispatch => {
+        axios.put(`${API_URL}/api/posts/${user.id}/post/${postId}`, newPost, {
+            headers: { Authorization: `Bearer ${user.token}` }
+        })
+        .then(response => {
+            dispatch({
+                type: UPDATE_POST,
+                post: response.data
+            })
+            history.push('/')
+        })
+        .catch(error => {
+            dispatch(addError(error.response.data.error.message))
+        })
     }
 }
 
@@ -76,7 +95,8 @@ export const getPosts = () => {
                 })
             })
             .catch(error => {
-                console.log(error.response.data)
+                console.log(error)
+                // dispatch(addError(error.response.data.error.message))
             });
     }
 }
@@ -86,14 +106,14 @@ export const deletePost = (user, postId) => {
         axios.delete(`${API_URL}/api/posts/${user.id}/post/${postId}`, {
             headers: { Authorization: `Bearer ${user.token}` }
         })
-        .then(response => {
+        .then(() => {
             dispatch({
                 type: DELETE_POST
             })
             dispatch(getPosts())
         })
         .catch(error => {
-            console.log(error.response.data)
+            dispatch(addError(error.response.data.error.message))
         });
     }
 }

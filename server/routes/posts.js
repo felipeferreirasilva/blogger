@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router({mergeParams: true})
 
-const { createPost, getPost, getAllPosts, deletePost } = require('../handlers/posts')
+const { createPost, getPost, getAllPosts, deletePost, updatePost } = require('../handlers/posts')
 
 router
     .route('/')
@@ -12,5 +12,7 @@ router
     .route('/:post_id')
     .get(getPost)
     .delete(deletePost)
+    .put(updatePost)
+
 
 module.exports = router

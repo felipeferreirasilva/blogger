@@ -1,4 +1,4 @@
-import { USER_SIGNUP, USER_SIGNIN, CREATE_POST, GET_POSTS, ADD_ERROR, REMOVE_ERROR, LOGOUT_USER } from '../actions'
+import { USER_SIGNUP, USER_SIGNIN, CREATE_POST, GET_POSTS, ADD_ERROR, REMOVE_ERROR, LOGOUT_USER, UPDATE_POST } from '../actions'
 import { combineReducers } from 'redux'
 
 const getPreviousUser = () => {
@@ -31,6 +31,8 @@ const posts = (state = {}, action) => {
             return state
         case GET_POSTS:
             return action.posts
+        case UPDATE_POST:
+            return state
         default:
             return state
     }

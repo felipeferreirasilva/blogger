@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { checkIfIsLogged } from '../../utils/checkIfIsLogged'
 import { connect } from 'react-redux'
-import { createPost } from '../../store/actions'
+import { createPost, removeError } from '../../store/actions'
+import Error from '../Error'
 
 class NewPost extends Component {
     state = {
@@ -36,9 +37,18 @@ class NewPost extends Component {
     }
 
     render() {
+        let hasError = Object.keys(this.props.error).length > 0 ? true : false
+        let error = this.props.error
+
+        this.props.history.listen(() => {
+            this.props.dispatch(removeError())
+        })
         return (
             <div className="container">
                 <div className="jumbotron">
+                    {hasError &&
+                        <Error error={error} />
+                    }
                     <h2 className="h1-responsive font-weight-bold text-center">New Post</h2>
                     <div className="row">
                         <div className="col-md-12 mb-md-0 mb-5">

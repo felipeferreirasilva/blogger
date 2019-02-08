@@ -22,7 +22,7 @@ exports.createPost = async function(req, res, next){
 
 exports.getPost = async function(req, res, next){
     try{
-        let post = await db.Post.find(req.params.post_id)
+        let post = await db.Post.findById(req.params.post_id)
         return res.status(200).json(post)
     }catch(err){
         return next(err)
@@ -43,6 +43,20 @@ exports.deletePost = async function(req, res, next){
         let foundPost = await db.Post.findById(req.params.post_id)
         await foundPost.remove()
         return res.status(200).json(foundPost)
+    }catch(err){
+        return next(err)
+    }
+}
+
+exports.updatePost = async function(req, res, next){
+    try{
+        let postId = req.params.post_id
+        let newPost = {
+            title: req.body.title,
+            text: req.body.text
+        } 
+        let post = await db.Post.findByIdAndUpdate(postId, newPost)
+        return res.status(200).json(post)
     }catch(err){
         return next(err)
     }
