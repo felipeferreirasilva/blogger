@@ -41,6 +41,7 @@ exports.getAllPosts = async function(req, res, next){
 exports.deletePost = async function(req, res, next){
     try{
         let foundPost = await db.Post.findById(req.params.post_id)
+        await foundPost.remove()
         return res.status(200).json(foundPost)
     }catch(err){
         return next(err)

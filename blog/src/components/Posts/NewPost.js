@@ -29,7 +29,7 @@ class NewPost extends Component {
 
     onSubmitForm = event => {
         let user = this.props.user
-        let post = { title: this.state.title, text: this.state.post, user: user.id}
+        let post = { title: this.state.title, text: this.state.post, user: user.id }
         let history = this.props.history
         this.props.dispatch(createPost(user, post, history))
         event.preventDefault()
@@ -38,26 +38,18 @@ class NewPost extends Component {
     render() {
         return (
             <div className="container">
-                <section className="mb-4">
-                    <h2 className="h1-responsive font-weight-bold text-center my-4">New Post</h2>
+                <div className="jumbotron">
+                    <h2 className="h1-responsive font-weight-bold text-center">New Post</h2>
                     <div className="row">
                         <div className="col-md-12 mb-md-0 mb-5">
                             <form id="post-form" name="post-form">
-                                <div className="row">
-                                    <div className="col-md-12">
-                                        <div className="md-form mb-0">
-                                            <input type="text" id="title" name="title" className="form-control" onChange={(event) => this.onChangeTitle(event)} value={this.state.title} />
-                                            <label htmlFor="title" className="">Title</label>
-                                        </div>
-                                    </div>
+                                <div className="md-form">
+                                    <input type="text" id="title" name="title" className="form-control" onChange={(event) => this.onChangeTitle(event)} value={this.state.title} />
+                                    <label htmlFor="title" className="">Title</label>
                                 </div>
-                                <div className="row">
-                                    <div className="col-md-12">
-                                        <div className="md-form">
-                                            <textarea type="text" id="post" name="post" rows="7" className="form-control md-textarea" onChange={(event) => this.onChangePost(event)} value={this.state.post}></textarea>
-                                            <label htmlFor="post">Post</label>
-                                        </div>
-                                    </div>
+                                <div className="md-form">
+                                    <textarea type="text" id="post" name="post" rows="7" className="form-control md-textarea" onChange={(event) => this.onChangePost(event)} value={this.state.post}></textarea>
+                                    <label htmlFor="post">Post</label>
                                 </div>
                             </form>
                             <div className="text-center text-md-left">
@@ -65,7 +57,7 @@ class NewPost extends Component {
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
             </div>
         )
     }

@@ -21,7 +21,7 @@ const postSchema = new mongoose.Schema({
 postSchema.pre('remove', async function(next){
     try{
         let user = await User.findById(this.user)
-        user.message.remove(this.id)
+        user.posts.remove(this.id)
         await user.save()
         return next()
     }catch(err){

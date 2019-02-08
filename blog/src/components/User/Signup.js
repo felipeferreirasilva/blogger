@@ -46,18 +46,28 @@ class Signup extends Component {
 
         return (
             <div className="container">
-                {hasError &&
-                    <Error error={error} />
-                }
-                <form className="text-center border border-light p-5">
-                    <p className="h1-responsive mb-4">Sign up</p>
-                    <input type="text" id="name" className="form-control mb-4" placeholder="Name" onChange={(event) => this.onChangeName(event)} value={this.state.name} required />
-                    <input type="email" id="email" className="form-control mb-4" placeholder="E-mail" onChange={(event) => this.onChangeEmail(event)} value={this.state.email} required />
-                    <input type="password" id="password" className="form-control" placeholder="Password" onChange={(event) => this.onChangePassword(event)} value={this.state.password} required />
-                    <button className="btn btn-primary my-4 btn-block" type="submit" onClick={(event) => this.onSubmitForm(event)}>Sign up</button>
-                    <hr />
-                    <p>Is already a member? <Link to="/users/signin">Log In</Link></p>
-                </form>
+                <div className="jumbotron">
+                    {hasError &&
+                        <Error error={error} />
+                    }
+                    <form>
+                    <h2 className="h1-responsive font-weight-bold text-center">Register</h2>
+                        <div className="md-form">
+                            <input type="text" id="name" className="form-control" onChange={(event) => this.onChangeName(event)} value={this.state.name} required />
+                            <label htmlFor="name" className="">Name</label>
+                        </div>
+                        <div className="md-form">
+                            <input type="email" id="email" className="form-control" onChange={(event) => this.onChangeEmail(event)} value={this.state.email} required />
+                            <label htmlFor="email" className="">Email</label>
+                        </div>
+                        <div className="md-form">
+                            <input type="password" id="password" className="form-control" onChange={(event) => this.onChangePassword(event)} value={this.state.password} required />
+                            <label htmlFor="password" className="">Password</label>
+                        </div>
+                        <button className="btn btn-primary my-4 btn-block" type="submit" onClick={(event) => this.onSubmitForm(event)}>Sign up</button>
+                        <p className="text-center">Is already a member? <Link to="/users/signin">Log In</Link></p>
+                    </form>
+                </div>
             </div>
         )
     }

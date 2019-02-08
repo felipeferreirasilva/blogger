@@ -8,7 +8,7 @@ class Nav extends Component {
         let user = this.props.user
         return (
             <div className="mb-4">
-                <nav className="mb-1 navbar navbar-expand-md navbar-dark primary-color">
+                <nav className="mb-1 navbar navbar-expand-md navbar-dark indigo">
                     <Link className="navbar-brand" to="/">Blogger</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
                         aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,7 +16,7 @@ class Nav extends Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbar">
                         <ul className="navbar-nav mr-auto">
-                            <li className="nav-item">
+                            <li className="nav-item active">
                                 <Link className="nav-link" to="/">Home</Link>
                             </li>
                             {logged &&
@@ -28,10 +28,9 @@ class Nav extends Component {
 
                         <ul className="navbar-nav ml-auto nav-flex-icons">
                             <li className="nav-item dropdown">
-                                <span className="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
+                                <span className="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {!logged ?
-                                        <span id="user-menu">Login </span>
+                                        <span id="user-menu" >Login </span>
                                         :
                                         <span id="user-menu">{user.name} </span>
                                     }
@@ -39,8 +38,8 @@ class Nav extends Component {
                                 <div className="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
                                     {!logged ?
                                         <div>
-                                            <Link className="dropdown-item" to="/users/signin">Sign In</Link>
-                                            <Link className="dropdown-item" to="/users/signup">Sign Up</Link>
+                                            <Link className="dropdown-item" to="/users/signin">Log In</Link>
+                                            <Link className="dropdown-item" to="/users/signup">Register</Link>
                                         </div>
                                         :
                                         <div>

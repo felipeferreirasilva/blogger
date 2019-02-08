@@ -39,17 +39,24 @@ class Signin extends Component {
 
         return (
             <div className="container">
-                {hasError &&
-                    <Error error={error} />
-                }
-                <form className="text-center border border-light p-5">
-                    <p className="h1-responsive mb-4">Sign in</p>
-                    <input type="email" id="email" className="form-control mb-4" placeholder="E-mail" onChange={(event) => this.onChangeEmail(event)} value={this.state.email} required />
-                    <input type="password" id="password" className="form-control mb-4" placeholder="Password" onChange={(event) => this.onChangePassword(event)} value={this.state.password} required />
-                    <button className="btn btn-primary btn-block my-4" type="submit" onClick={(event) => this.onSubmitForm(event)}>Sign in</button>
-                    <hr />
-                    <p>Not a member? <Link to="/users/signup">Register</Link></p>
-                </form>
+                <div className="jumbotron">
+                    {hasError &&
+                        <Error error={error} />
+                    }
+                    <form>
+                        <h2 className="h1-responsive font-weight-bold text-center">Sign in</h2>
+                        <div className="md-form">
+                            <input type="email" id="email" className="form-control" onChange={(event) => this.onChangeEmail(event)} value={this.state.email} required />
+                            <label htmlFor="email" className="">Email</label>
+                        </div>
+                        <div className="md-form">
+                            <input type="password" id="password" className="form-control" onChange={(event) => this.onChangePassword(event)} value={this.state.password} required />
+                            <label htmlFor="password" className="">Password</label>
+                        </div>
+                        <button className="btn btn-primary btn-block my-4" type="submit" onClick={(event) => this.onSubmitForm(event)}>Sign in</button>
+                        <p className="text-center">Not a member? <Link to="/users/signup">Register</Link></p>
+                    </form>
+                </div>
             </div>
         )
     }

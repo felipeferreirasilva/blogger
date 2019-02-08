@@ -3,11 +3,12 @@ import { API_URL } from '../../utils/api'
 
 export const USER_SIGNUP = 'USER_SIGNUP'
 export const USER_SIGNIN = 'USER_SIGNIN'
+export const LOGOUT_USER = 'LOGOUT_USER'
 export const CREATE_POST = 'CREATE_POST'
 export const GET_POSTS = 'GET_POSTS'
+export const DELETE_POST = 'DELETE_POST'
 export const ADD_ERROR = 'ADD_ERROR'
 export const REMOVE_ERROR = 'REMOVE_ERROR'
-export const LOGOUT_USER = 'LOGOUT_USER'
 
 export const signUp = (newUser, history) => {
     return dispatch => {
@@ -50,7 +51,7 @@ export const signIn = (user, history) => {
 
 export const createPost = (user, post, history) => {
     return dispatch => {
-        axios.post(`${API_URL}/api/posts/${user.id}/new`, post, {
+        axios.post(`${API_URL}/api/posts/${user.id}/post`, post, {
             headers: { Authorization: `Bearer ${user.token}` }
         })
             .then(() => {
@@ -77,6 +78,23 @@ export const getPosts = () => {
             .catch(error => {
                 console.log(error.response.data)
             });
+    }
+}
+
+export const deletePost = (user, postId) => {
+    return dispatch => {
+        axios.delete(`${API_URL}/api/posts/${user.id}/post/${postId}`, {
+            headers: { Authorization: `Bearer ${user.token}` }
+        })
+        .then(response => {
+            dispatch({
+                type: DELETE_POST
+            })
+            dispatch(getPosts())
+        })
+        .catch(error => {
+            console.log(error.response.data)
+        });
     }
 }
 
