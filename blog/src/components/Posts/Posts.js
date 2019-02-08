@@ -20,26 +20,27 @@ class Posts extends Component {
         // let user = this.props.user
 
         return (
-            <div className="container">
+            <div>
                 {Object.keys(posts).length > 0 &&
                     posts.map(post => (
-                        <div className="jumbotron hoverable" key={post._id}>
-                            <h2 className="card-title h2 mb-4">{post.title}</h2>
-                            <div className="text-right"><strong>Date:</strong> <Moment format="DD/MM/YYYY">{post.updatedAt}</Moment></div>
-                            <hr />
-                            <p className="card-text">{post.text}</p>
-                            {logged &&
-                                <span>
-                                    {/* If only the owner of the post can delete the post */}
-                                    {/* {user.id === post.user && */}
+                        <div className="card mr-4 ml-4 mb-4 hoverable" key={post._id}>
+                            <div className="card-header"><strong>Date:</strong> <Moment format="DD/MM/YYYY">{post.updatedAt}</Moment></div>
+                            <div className="card-body">
+                                <h2 className="card-title">{post.title}</h2>
+                                <p className="card-text text-justify">{post.text}</p>
+                                {logged &&
                                     <span>
-                                        <button className="btn btn-danger btn-md" onClick={(event) => this.onDeletePost(event)} value={JSON.stringify(post)}>Delete</button>
-                                        <Link to={`/posts/update/${post._id}`}><button className="btn btn-primary btn-md">Edit</button></Link>
+                                        {/* If only the owner of the post can delete */}
+                                        {/* {user.id === post.user && */}
+                                        <span>
+                                            <hr />
+                                            <button className="btn btn-danger btn-md" onClick={(event) => this.onDeletePost(event)} value={JSON.stringify(post)}>Delete</button>
+                                            <Link to={`/posts/update/${post._id}`}><button className="btn btn-primary btn-md">Edit</button></Link>
+                                        </span>
+                                        {/* } */}
                                     </span>
-                                    {/* } */}
-                                </span>
-                            }
-
+                                }
+                            </div>
                         </div>
                     ))
                 }
