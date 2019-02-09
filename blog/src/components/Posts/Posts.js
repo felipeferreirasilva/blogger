@@ -17,7 +17,7 @@ class Posts extends Component {
     render() {
         let posts = this.props.posts
         let logged = Object.keys(this.props.user).length > 0 ? true : false
-        // let user = this.props.user
+        let user = this.props.user
 
         return (
             <div className="container">
@@ -34,13 +34,13 @@ class Posts extends Component {
                                 <Link to={`/posts/view/${post._id}`} className="btn btn-primary btn-md waves-effect waves-light">Read More</Link>
                                 {logged &&
                                     <span>
-                                        {/* If only the owner of the post can delete */}
-                                        {/* {user.id === post.user && */}
+                                        {/* Only the owner of the post can delete and update it */}
+                                        {user.id === post.user &&
                                         <span>
                                             <button className="btn btn-danger btn-md waves-effect waves-light" onClick={(event) => this.onDeletePost(event)} value={JSON.stringify(post)}>Delete</button>
                                             <Link to={`/posts/update/${post._id}`}><button className="btn btn-default btn-md waves-effect waves-light">Edit</button></Link>
                                         </span>
-                                        {/* } */}
+                                        }
                                     </span>
                                 }
                             </div>
