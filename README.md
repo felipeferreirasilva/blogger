@@ -1,16 +1,16 @@
-### Install
-## Install Server
+## Install
+### Install Server
 run npm install inside server folder
 
-## Install Client
+### Install Client
 run npm install inside blog folder
 
-## Install DB
+### Install DB
 Make sure install MONGODB
 
-### Run
-## Run Server
+## Run
+### Run Server
 use node index.js to run the server (Make sure the mongodb is running)
 
-## Run Client
+### Run Client
 user npm start to tun the client
