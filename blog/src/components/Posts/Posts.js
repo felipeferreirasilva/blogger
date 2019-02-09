@@ -23,19 +23,20 @@ class Posts extends Component {
             <div>
                 {Object.keys(posts).length > 0 &&
                     posts.map(post => (
-                        <div className="card mr-4 ml-4 mb-4 hoverable" key={post._id}>
+                        <div className="card mr-md-5 ml-md-5 mr-sm-3 ml-sm-3 mb-4 hoverable" key={post._id}>
                             <div className="card-header">
                                 <strong>Date:</strong> <Moment format="DD/MM/YYYY hh:mm">{post.updatedAt}</Moment>
                             </div>
                             <div className="card-body">
                                 <h2 className="card-title">{post.title}</h2>
-                                <p className="card-text text-justify">{post.text}</p>
+                                <div className="card-text text-justify d-block text-truncate">{post.text}</div>
+                                <hr />
+                                <Link to={`/posts/view/${post._id}`} className="btn btn-default btn-md waves-effect waves-light">Read More</Link>
                                 {logged &&
                                     <span>
                                         {/* If only the owner of the post can delete */}
                                         {/* {user.id === post.user && */}
                                         <span>
-                                            <hr />
                                             <button className="btn btn-danger btn-md waves-effect waves-light" onClick={(event) => this.onDeletePost(event)} value={JSON.stringify(post)}>Delete</button>
                                             <Link to={`/posts/update/${post._id}`}><button className="btn btn-primary btn-md waves-effect waves-light">Edit</button></Link>
                                         </span>

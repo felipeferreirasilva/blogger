@@ -9,7 +9,7 @@ class Nav extends Component {
         return (
             <div className="mb-4">
                 <nav className="mb-1 navbar navbar-expand-md navbar-dark indigo">
-                    <Link className="navbar-brand" to="/"><i class="fas fa-book-open mr-2"></i>Blogger</Link>
+                    <Link className="navbar-brand" to="/"><i className="fas fa-book-open mr-2"></i>Blogger</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
                         aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>

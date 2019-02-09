@@ -58,7 +58,7 @@ class NewPost extends Component {
                                     <label htmlFor="title" className="">Title</label>
                                 </div>
                                 <div className="md-form">
-                                    <textarea type="text" id="post" name="post" rows="7" className="form-control md-textarea" onChange={(event) => this.onChangePost(event)} value={this.state.post}></textarea>
+                                    <textarea type="text" id="post" name="post" rows="7" className="form-control md-textarea" style={{overflowY: "scroll"}} onChange={(event) => this.onChangePost(event)} value={this.state.post}></textarea>
                                     <label htmlFor="post">Post</label>
                                 </div>
                             </form>
