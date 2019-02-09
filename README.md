@@ -1,7 +1,10 @@
+#Blogger
+![](https://i.imgur.com/R9vrBMu.png)
+
 ## About Blogger
 Blogger was created to show some skills as Full-Stack developer. It uses the last and best technologies available at the moment. This project is a SPA where you can Read, Create, Update and Delete posts, the APP contains a secured data transfer implementation using Json Web Tokens and middlewares to make some checks before finish the requests.
 
-###Video Demo: https://youtu.be/2P-0-7rpWiU
+### Video Demo: https://youtu.be/g1ECXhACbP4
  
 ## Technologies
 ### Front-End
