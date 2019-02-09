@@ -1,4 +1,5 @@
 require('dotenv').config()
+
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -17,7 +18,6 @@ app.use('/api/auth', authRoutes)
 app.use('/api/posts', postsRoutes)
 app.use('/api/posts/:id/post', loginRequired, ensureCorrectUser, postsRoutes)
 
- 
 app.use(function(req, res, next){
     let err = new Error('Not Found')
     err.status = 404
