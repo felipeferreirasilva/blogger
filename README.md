@@ -33,10 +33,11 @@ use 'npm start' to tun the client
 
 ## Details
 Only logged users can Create, Update or Delete posts.
-I left a commented line that allows only the owner of the post delete it, to turn this on just uncomment the lines.
+Only the owner of the post can delete or edit it.
 
 ## Author
-Felipe Silva, email: felipefsnz@gmail.com
+Felipe Silva 
+email: felipefsnz@gmail.com
 
 ## License
 You're free to copy, edit, and use this project, just remember to give the credits
